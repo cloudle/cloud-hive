@@ -1,6 +1,6 @@
 runtime: nodejs
 env: flex
-service: cloud-hive
+#service: cloud-hive
 
 skip_files:
   - ^components$

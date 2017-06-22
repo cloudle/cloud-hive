@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "NODE_ENV=production node server.js",
+		"start": "NODE_ENV=production PORT=8080 node server.js",
 		"web": "babel-node server.js",
 		"dev": "devtool -r babel-register server.js",
 		"build": "next build && webpack --config webpack.config.js --progress",
