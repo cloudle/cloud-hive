@@ -1,0 +1,11 @@
+runtime: nodejs
+env: flex
+service: cloud-hive
+
+skip_files:
+  - ^components$
+  - ^pages$
+  - ^server$
+  - ^utils$
+  - ^store$
+  - ^\.idea$
