@@ -6,6 +6,7 @@ module.exports = {
 			'react-native': 'react-native-web',
 		};
 
+		config.module.rules.push({ test: /\.css$/, loader: ['style-loader', 'css-loader'] });
 		/* TODO: Working on react-native-vector-icons package for traditional WEB! */
 		// config.module.rules = [...config.module.rules, {
 		// 	test: /\.ttf$/,

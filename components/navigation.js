@@ -3,7 +3,7 @@ import withRedux from 'next-redux-wrapper';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Router from 'next/router';
 
-import { colors, iStyles } from '../../utils/index';
+import { colors, iStyles } from '../utils/index';
 
 type Props = {
 	url?: Object,
@@ -89,4 +89,7 @@ const menus = [{
 },  {
 	title: 'ECOSYSTEM',
 	link: '/ecosystem',
-}, ];
+}, {
+	title: 'PLAYGROUND',
+	link: '/playground',
+}];

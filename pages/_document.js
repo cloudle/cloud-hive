@@ -14,16 +14,9 @@ export default class MyDocument extends Document {
 	render () {
 		return <html>
 			<Head>
-				<style>{`
-					body { margin: 0 } /* custom! */
-					.progress-bar {
-						opacity: 1;
-						transition: opacity 2000ms linear;
-					}
-					.progress-bar.done {
-						opacity: 0;
-					}
-				`}</style>
+				<link rel="stylesheet" href="/static/main.css" />
+				<link rel="stylesheet" href="/static/graphiqlStyle.css" />
+
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 				<meta name="format-detection" content="telephone=no"/>
 				<meta name="msapplication-tap-highlight" content="no"/>

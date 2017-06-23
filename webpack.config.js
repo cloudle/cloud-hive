@@ -13,6 +13,7 @@ console.log('Bundling server...');
 let nodeModules = {};
 fs.readdirSync('node_modules')
 	.filter(function(x) {
+		console.log(x, '<<');
 		return ['.bin'].indexOf(x) === -1;
 	})
 	.forEach(function(mod) {

@@ -1,0 +1,42 @@
+body {
+  font-family: "Avenir Next",Nunito,"Helvetica Neue",Helvetica,sans-serif;
+  font-size: 14px;
+  color: #888888;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+.touchable {
+  cursor: pointer;
+  user-select: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.progress-bar {
+  opacity: 1;
+  transition: opacity 2000ms linear;
+}
+.progress-bar.done {
+  opacity: 0;
+}
+
+@font-face {
+  font-family: Material Icons;
+  src: url(MaterialIcons.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: FontAwesome;
+  src: url(FontAwesome.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Ionicons;
+  src: url(Ionicons.ttf) format('truetype');
+}
