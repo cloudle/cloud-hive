@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import Datastore from '@google-cloud/datastore';
 
+import { executeGQL } from './utils';
+
 const router = express.Router();
 const datastore = Datastore();
 
@@ -14,11 +16,9 @@ router.use('/api', cors(), bodyParser.json(), (req, res) => {
 		.then(markdowns => console.log(markdowns))
 		.catch(error => console.log(error));
 
-	res.json({ message: 'Hello world!' });
-
-	// return execute(query, variables, { clientId, })
-	// 	.then(result => res.json(result))
-	// 	.catch(error => res.json(error));
+	return executeGQL(query, variables, { clientId, })
+		.then(result => res.json(result))
+		.catch(error => res.json(error));
 });
 
 function createMarkDown(content) {
@@ -60,7 +60,7 @@ function publishMarkdown(markdownId) {
 			});
 			return transaction.commit();
 		}).then(() => {
-			console.log(`Markdown ${markdownId} updated successfully.`)
+			console.log(`Markdown ${markdownId} updated successfully.`);
 		}).catch(() => transaction.rollback());
 }
 
