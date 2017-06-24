@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production PORT=8080 node server.js",
+    "pm2": "NODE_ENV=production PORT=8080 pm2 start server.js",
     "dev": "babel-node server.js",
     "api": "USE_NEXT=false babel-node server.js",
     "devtool": "USE_NEXT=false devtool -r babel-register server.js",
@@ -75,6 +76,6 @@
     "webpack": "^2.5.1"
   },
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=8.1.2"
   }
 }

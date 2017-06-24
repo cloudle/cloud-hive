@@ -1,10 +1,15 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
+import { AppRegistry } from 'react-native';
 
 export default class MyDocument extends Document {
 	static getInitialProps ({ renderPage }) {
+		AppRegistry.registerComponent('Main', () => Main);
+		const { stylesheet } = AppRegistry.getApplication('Main');
+		const styles = <style dangerouslySetInnerHTML={{ __html: stylesheet }} />;
+
 		const {html, head, errorHtml, chunks} = renderPage();
-		return { html, head, errorHtml, chunks };
+		return { html, styles, head, errorHtml, chunks };
 	}
 
 	componentDidMount() {
