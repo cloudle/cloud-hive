@@ -7,7 +7,8 @@ import GraphiQL from './graphiql-src';
 import TabBar from './graphiqlTabBar';
 import { colors } from '../utils';
 
-const defaultEndpoint = 'http://localhost:3000/api';
+const isServer = typeof window === 'undefined';
+const defaultEndpoint = isServer ? '' : `${document.location.origin}/api`;
 
 export default class GraphWorkspace extends Component {
 	constructor(props) {
