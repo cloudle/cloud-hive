@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	iconWrapper: {
-		padding: 14, paddingLeft: 10,
+		padding: 8, paddingLeft: 10,
 	},
 });

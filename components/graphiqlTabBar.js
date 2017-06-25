@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
 	tabItemContainer: {
 		flex: 1,
 		flexDirection: 'row',
-		paddingLeft: 40,
 	},
 	tabCommandContainer: {
 		flexDirection: 'row',

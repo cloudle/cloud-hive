@@ -8,7 +8,7 @@ type Props = {
 	url?: Object,
 };
 
-export default class NavigationComponent extends Component {
+export default class PlaygroundNavigation extends Component {
 	props: Props;
 
 	render() {

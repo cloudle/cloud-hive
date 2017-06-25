@@ -12,9 +12,9 @@ router.use('/api', cors(), bodyParser.json(), (req, res) => {
 	const { query, variables } = req.body,
 		clientId = req.get('clientId');
 
-	// listMarkdowns()
-	// 	.then(markdowns => console.log(markdowns))
-	// 	.catch(error => console.log(error));
+	listMarkdowns()
+		.then(markdowns => console.log(markdowns))
+		.catch(error => console.log(error));
 
 	return executeGQL(query, variables, { clientId, })
 		.then(result => res.json(result))
