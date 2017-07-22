@@ -1,0 +1,15 @@
+{
+	"AWSEBDockerrunVersion": 2,
+	"containerDefinitions": [
+		{
+			"name": "nginx-proxy",
+			"image": "nginx",
+			"mountPoints": [
+				{
+					"sourceVolume": "awseb-logs-nginx-proxy",
+					"containerPath": "/var/log/nginx"
+				}
+			]
+		}
+	]
+}

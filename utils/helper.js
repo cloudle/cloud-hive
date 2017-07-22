@@ -15,3 +15,5 @@ export function GetRatioHeight(width): number {
 export function formatNumber(n) {
 	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
+
+export const isServer = typeof window === 'undefined';

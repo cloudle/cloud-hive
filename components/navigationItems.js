@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Router from 'next/router';
+import { connect } from 'react-redux';
 
-import { colors, iStyles } from '../utils/index';
+import { colors, iStyles, login, logout } from '../utils';
 
 type Props = {
 	url?: Object,
+	userProfile?: Object,
+	menuWrapperStyle?: any,
 };
+
+@connect(({ app }) => {
+	return {
+		userProfile: app.userProfile,
+	};
+})
 
 export default class extends Component {
 	render() {
@@ -18,11 +27,29 @@ export default class extends Component {
 
 				return <TouchableOpacity
 					activeOpacity={0.2} key={i}
-					style={[styles.menuItemWrapper, activeWrapperStyle]}
+					style={[styles.menuItemWrapper, this.props.menuWrapperStyle, activeWrapperStyle]}
 					onPress={() => Router.push(menu.link)}>
 					<Text style={[styles.menuText, activeTextStyle]}>{menu.title}</Text>
 				</TouchableOpacity>})}
+
+			{this.renderAuthCommands()}
 		</View>;
+	}
+
+	renderAuthCommands() {
+		return this.props.userProfile.uid ? <TouchableOpacity
+			style={styles.menuItemWrapper}
+			onPress={() => logout()}>
+			<Text style={styles.menuText}>{this.props.userProfile.displayName} | LOGOUT</Text>
+		</TouchableOpacity> : <TouchableOpacity
+			style={styles.menuItemWrapper}
+			onPress={() => {
+				login().then((result) => {
+					console.log(result);
+				})
+			}}>
+			<Text style={styles.menuText}>LOGIN</Text>
+		</TouchableOpacity>;
 	}
 }
 
@@ -46,7 +73,6 @@ const styles = StyleSheet.create({
 const menus = [{
 	title: 'PLATFORMS',
 	link: '/platforms',
-	active: true,
 }, {
 	title: 'SHOWCASES',
 	link: '/showcases',

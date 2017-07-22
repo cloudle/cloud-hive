@@ -3,8 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 
-import store from '../store';
-import Navigation from './playgroundNavigation';
+import PlaygroundNavigation from './playgroundNavigation';
 import ProgressBar from './progressBar';
 import * as appActions from '../store/action/app';
 import { iStyles, colors } from '../utils';
@@ -40,12 +39,11 @@ export default class AppLayout extends Component {
 
 	render() {
 		return <View style={styles.container}>
-			<Navigation url={this.props.url}/>
+			<ProgressBar backgroundColor="#ffffff"/>
+			<PlaygroundNavigation url={this.props.url}/>
 			<View style={[styles.contentContainer, this.props.style]}>
 				{this.props.children}
 			</View>
-
-			<ProgressBar backgroundColor="#ffffff"/>
 		</View>;
 	}
 }

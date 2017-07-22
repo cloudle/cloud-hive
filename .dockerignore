@@ -1,0 +1,12 @@
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore
+
+# source code!
+components/
+lottie/
+pages/
+server/
+store/
+utils/

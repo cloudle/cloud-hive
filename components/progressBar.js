@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Animated, Easing, Dimensions, View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
+import { isServer } from '../utils';
 import * as appActions from '../store/action/app';
 
 type Props = {
@@ -29,7 +30,7 @@ export default class ProgressBar extends Component {
 	};
 
 	componentDidMount() {
-		this.interval = setInterval(this.optimisticTick, 20);
+		if (!isServer) this.interval = setInterval(this.optimisticTick, 20);
 	}
 
 	componentWillUnmount() {

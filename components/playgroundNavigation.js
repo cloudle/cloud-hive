@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
-import Icon from './vector-icons/MaterialIcons';
+import Router from 'next/router';
 
+import Icon from './vector-icons/MaterialIcons';
 import { configs, colors } from '../utils';
 
 type Props = {
@@ -13,18 +14,20 @@ export default class PlaygroundNavigation extends Component {
 
 	render() {
 		return <View style={styles.container}>
+			<TouchableOpacity
+				style={styles.homeItemWrapper}
+				onPress={() => Router.push('/')}>
+				<Icon name='home' style={styles.menuIcon}/>
+			</TouchableOpacity>
+
 			{menuItems.map((menu, i) => {
 				return <MenuItem
 					key={i}
 					menu={menu}
 					pathname={this.props.url.pathname}
-					onPress={this.navigatePage}/>;
+					onPress={route => Router.push(route.link)}/>;
 			})}
 		</View>;
-	}
-
-	navigatePage = (route) => {
-		// this.props.dispatch(push(route.path));
 	}
 }
 
@@ -49,12 +52,16 @@ const styles = StyleSheet.create({
 	container: {
 		width: configs.navigationWidth,
 		backgroundColor: colors.darken(colors.darkBackground, 5),
-		paddingTop: 62,
 	},
 	menuItemWrapper: {
 		alignItems: 'center', justifyContent: 'center',
 		height: configs.navigationWidth,
 		backgroundColor: colors.darken(colors.darkBackground, 2),
+	},
+	homeItemWrapper: {
+		alignItems: 'center', justifyContent: 'flex-end',
+		height: configs.navigationWidth,
+		marginTop: 3, paddingBottom: 10,
 	},
 	menuIcon: {
 		color: '#ffffff',
@@ -63,15 +70,21 @@ const styles = StyleSheet.create({
 });
 
 const menuItems = [{
-	icon: 'donut-large',
-	path: '/schema',
+	icon: 'assignment-ind',
+	link: '/playground/iam',
+}, {
+	icon: 'card-membership',
+	link: '/playground/bill',
+},  {
+	icon: 'queue-play-next',
+	link: '/playground/project',
 }, {
 	icon: 'fingerprint',
-	path: '/data',
+	link: '/playground/schema',
 }, {
-	icon: 'verified-user',
-	path: '/permission',
+	icon: 'graphic-eq',
+	link: '/playground/data',
 }, {
 	icon: 'play-circle-outline',
-	path: '/playground',
+	link: '/playground',
 }, ];

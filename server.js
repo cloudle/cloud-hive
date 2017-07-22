@@ -2,7 +2,7 @@ const express = require('express');
 const serverUtils = require('./serverUtils');
 
 const port = process.env.PORT || 3000;
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV === 'dev';
 const useNextSSR = process.env.USE_NEXT !== 'false';
 const server = express();
 

@@ -4,7 +4,6 @@ import withRedux from 'next-redux-wrapper';
 import { Button, Input } from 'react-universal-ui';
 
 import Layout from '../../components/playgroundLayout';
-import GraphiQL from '../../components/graphiql';
 import { colors } from '../../utils';
 import store from '../../store';
 import * as appActions from '../../store/action/app';
@@ -20,14 +19,16 @@ type Props = {
 	};
 })
 
-export default class PlaygroundPage extends Component {
+export default class PlaygroundData extends Component {
 	render() {
-		return <Layout url={this.props.url}>
-			<GraphiQL/>
+		return <Layout url={this.props.url} style={styles.container}>
+			<Text>Playground Data</Text>
 		</Layout>;
 	}
 }
 
 const styles = StyleSheet.create({
-
+	container: {
+		alignItems: 'center', alignContent: 'center',
+	},
 });

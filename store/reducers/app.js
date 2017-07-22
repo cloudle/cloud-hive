@@ -3,6 +3,7 @@ import * as Actions from '../actions';
 
 const initialState = {
 	counter: 0,
+	userProfile: {},
 	routeLoaded: true,
 	loadingProgress: 1,
 };
@@ -11,6 +12,8 @@ export default appReducer((state = initialState, action) => {
 	switch (action.type) {
 	case Actions.IncreaseCounter:
 		return { ...state, counter: state.counter + action.volume };
+	case Actions.SyncUserProfile:
+		return { ...state, userProfile: action.profile };
 	case Actions.ToggleRouteLoaded:
 		return { ...state, routeLoaded: action.flag === undefined ? !state.routeLoaded : action.flag };
 	case Actions.UpdateLoadingProgress:

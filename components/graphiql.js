@@ -8,7 +8,8 @@ import TabBar from './graphiqlTabBar';
 import { colors } from '../utils';
 
 const isServer = typeof window === 'undefined';
-const defaultEndpoint = isServer ? '' : `${document.location.origin}/api`;
+// const defaultEndpoint = isServer ? '' : `${document.location.origin}/api`;
+const defaultEndpoint = isServer ? '' : 'http://localhost:8080/api';
 
 export default class GraphWorkspace extends Component {
 	constructor(props) {
@@ -31,7 +32,7 @@ export default class GraphWorkspace extends Component {
 			} : {},
 			graphQLFetcher = (graphQLParams) => {
 				const token = localStorage.getItem('salt'),
-					headers = { 'Content-Type': 'application/json', };
+					headers = { Accept: 'application/json', 'Content-Type': 'application/json', };
 
 				if (token) headers.jwt_token = token;
 

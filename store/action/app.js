@@ -4,6 +4,10 @@ export function increaseCounter (volume = 1) {
 	return { type: Actions.IncreaseCounter, volume };
 }
 
+export function syncUserProfile (profile = {}) {
+	return { type: Actions.SyncUserProfile, profile };
+}
+
 export function toggleRouteLoaded (flag) {
 	return { type: Actions.ToggleRouteLoaded, flag };
 }

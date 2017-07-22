@@ -5,11 +5,10 @@ import { AppRegistry } from 'react-native';
 export default class MyDocument extends Document {
 	static getInitialProps ({ renderPage }) {
 		AppRegistry.registerComponent('Main', () => Main);
-		const { stylesheet } = AppRegistry.getApplication('Main');
-		const styles = <style dangerouslySetInnerHTML={{ __html: stylesheet }} />;
-
+		const { stylesheets } = AppRegistry.getApplication('Main');
 		const {html, head, errorHtml, chunks} = renderPage();
-		return { html, styles, head, errorHtml, chunks };
+
+		return { html, styles: stylesheets, head, errorHtml, chunks };
 	}
 
 	componentDidMount() {
