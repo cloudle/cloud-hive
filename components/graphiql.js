@@ -5,11 +5,11 @@ import fetch from 'isomorphic-fetch';
 
 import GraphiQL from './graphiql-src';
 import TabBar from './graphiqlTabBar';
-import { colors } from '../utils';
+import { colors, apiEndpoint, getIdToken } from '../utils';
 
 const isServer = typeof window === 'undefined';
 // const defaultEndpoint = isServer ? '' : `${document.location.origin}/api`;
-const defaultEndpoint = isServer ? '' : 'http://localhost:8080/api';
+const defaultEndpoint = isServer ? '' : apiEndpoint;
 
 export default class GraphWorkspace extends Component {
 	constructor(props) {
@@ -31,16 +31,19 @@ export default class GraphWorkspace extends Component {
 				backgroundColor: '#999999',
 			} : {},
 			graphQLFetcher = (graphQLParams) => {
-				const token = localStorage.getItem('salt'),
-					headers = { Accept: 'application/json', 'Content-Type': 'application/json', };
+				return new Promise((resolve, reject) => {
+					getIdToken().then((token) => {
+						const headers = { Accept: 'application/json', 'Content-Type': 'application/json', };
+						if (token) headers.token = token;
 
-				if (token) headers.jwt_token = token;
-
-				return fetch(this.state.url, {
-					method: 'POST',
-					headers,
-					body: JSON.stringify(graphQLParams),
-				}).then(response => response.json());
+						fetch(this.state.url, {
+							method: 'POST',
+							headers,
+							body: JSON.stringify(graphQLParams),
+						}).then(response => resolve(response.json()))
+							.catch(error => reject(error));
+					}).catch(error => reject(error));
+				});
 			},
 			commands = <Button
 				onPress={() => this.setState({ urlVisible: !this.state.urlVisible })}

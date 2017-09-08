@@ -15,6 +15,29 @@ export const fireApp = isServer ? {} : initializeApp({
 	messagingSenderId: "502542271073"
 });
 
+export function getIdToken() {
+	return new Promise((resolve, reject) => {
+		const currentUser = auth().currentUser;
+
+		if (currentUser) {
+			currentUser.getIdToken().then((token) => {
+				resolve(token);
+			}).catch(error => reject(error));
+		} else {
+			resolve(null);
+		}
+	});
+}
+
+export function dispatch(payload) {
+	if (isServer) return;
+
+	const store = window.__NEXT_REDUX_STORE__;
+	if (store && store.dispatch) {
+		store.dispatch(payload);
+	}
+}
+
 export function login() {
 	return auth().signInWithRedirect(provider);
 }
@@ -24,9 +47,10 @@ export function logout() {
 }
 
 if (!isServer) {
+	window.app = fireApp;
 	window.firebase = firebase;
 
 	auth().onAuthStateChanged((profile) => {
-		store().dispatch(appActions.syncUserProfile(profile));
+		dispatch(appActions.syncUserProfile(profile));
 	});
 }
