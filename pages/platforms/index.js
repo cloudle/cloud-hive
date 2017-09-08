@@ -8,6 +8,7 @@ import store from '../../store';
 @withRedux(store, ({ app }) => {
 	return {
 		counter: app.counter,
+		userProfile: app.userProfile,
 	};
 })
 

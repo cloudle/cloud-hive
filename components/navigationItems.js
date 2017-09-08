@@ -43,11 +43,7 @@ export default class extends Component {
 			<Text style={styles.menuText}>{this.props.userProfile.displayName} | LOGOUT</Text>
 		</TouchableOpacity> : <TouchableOpacity
 			style={styles.menuItemWrapper}
-			onPress={() => {
-				login().then((result) => {
-					console.log(result);
-				})
-			}}>
+			onPress={() => login()}>
 			<Text style={styles.menuText}>LOGIN</Text>
 		</TouchableOpacity>;
 	}

@@ -4,7 +4,11 @@ export function increaseCounter (volume = 1) {
 	return { type: Actions.IncreaseCounter, volume };
 }
 
-export function syncUserProfile (profile = {}) {
+export function syncUserProfile (profile) {
+	const wrappedProfile = profile || {
+			unAuthenticated: true,
+		};
+
 	return { type: Actions.SyncUserProfile, profile };
 }
 
