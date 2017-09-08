@@ -3,7 +3,7 @@ import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableHighlight, View } from './react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {

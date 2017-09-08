@@ -6,7 +6,7 @@ import {
   PixelRatio,
   processColor,
   Text,
-} from './react-native';
+} from 'react-native';
 
 import createIconButtonComponent from './icon-button';
 import createTabBarItemIOSComponent from './tab-bar-item-ios';

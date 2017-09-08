@@ -2,7 +2,7 @@ import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TabBarIOS } from './react-native';
+import { TabBarIOS } from 'react-native';
 
 export default function createTabBarItemIOSComponent(
   IconNamePropType,
