@@ -3,7 +3,7 @@ import withRedux from 'next-redux-wrapper';
 import { View, Text, StyleSheet } from 'react-native';
 import Link from 'next/link';
 
-import store from '../store';
+import store from '../src/store';
 
 type Props = {
 	dispatch?: Function,

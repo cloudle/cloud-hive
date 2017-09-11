@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import withRedux from 'next-redux-wrapper';
 
-import AppLayout from '../../components/layout';
-import store from '../../store';
+import AppLayout from '../../src/components/web/layout';
+import store from '../../src/store';
 
 @withRedux(store, ({ app }) => {
 	return {

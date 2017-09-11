@@ -3,12 +3,12 @@ import { TouchableOpacity, View, Image, Text, StyleSheet, } from 'react-native';
 import withRedux from 'next-redux-wrapper';
 import { Button, Input } from 'react-universal-ui';
 
-import Markdown from '../components/markdown';
-import Layout from '../components/layout';
-import Greeting from '../components/greeting';
-import { colors } from '../utils';
-import store from '../store';
-import * as appActions from '../store/action/app';
+import Markdown from '../src/components/markdown';
+import Layout from '../src/components/web/layout';
+import Greeting from '../src/components/web/greeting';
+import { colors } from '../src/utils';
+import store from '../src/store';
+import * as appActions from '../src/store/action/app';
 
 type Props = {
 	dispatch?: Function,

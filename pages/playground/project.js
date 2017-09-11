@@ -3,10 +3,10 @@ import { TouchableOpacity, View, Image, Text, StyleSheet, } from 'react-native';
 import withRedux from 'next-redux-wrapper';
 import { Button, Input } from 'react-universal-ui';
 
-import Layout from '../../components/playgroundLayout';
-import { colors } from '../../utils';
-import store from '../../store';
-import * as appActions from '../../store/action/app';
+import Layout from '../../src/components/web/playgroundLayout';
+import { colors } from '../../src/utils';
+import store from '../../src/store';
+import * as appActions from '../../src/store/action/app';
 
 type Props = {
 	dispatch?: Function,

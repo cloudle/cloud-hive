@@ -3,10 +3,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import withRedux from 'next-redux-wrapper';
 import Lottie from 'react-lottie';
 
-import AppLayout from '../../components/layout';
+import AppLayout from '../../src/components/web/layout';
 import Sidebar from './sidebar';
-import store from '../../store';
-import * as animationData from '../../lottie/pinjump.json'
+import store from '../../src/store';
+import * as animationData from '../../src/lottie/pinjump.json';
 
 @withRedux(store, ({ app }) => {
 	return {
@@ -32,8 +32,8 @@ export default class DocsPage extends Component {
 }
 
 const styles = StyleSheet.create({
-  layout: {
-  	flexDirection: 'row',
+	layout: {
+		flexDirection: 'row',
 	},
 	contentContainer: {
 		flex: 1,

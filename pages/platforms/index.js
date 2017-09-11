@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import withRedux from 'next-redux-wrapper';
 
-import AppLayout from '../../components/layout';
-import store from '../../store';
+import AppLayout from '../../src/components/web/layout';
+import store from '../../src/store';
+
+type Props = {
+	url?: string,
+};
 
 @withRedux(store, ({ app }) => {
 	return {
@@ -13,6 +17,8 @@ import store from '../../store';
 })
 
 export default class PlatformsPage extends Component {
+	props: Props;
+
 	render() {
 		return <AppLayout url={this.props.url}>
 			<Text>PlatformsPage</Text>

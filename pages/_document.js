@@ -3,10 +3,10 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { AppRegistry } from 'react-native';
 
 export default class MyDocument extends Document {
-	static getInitialProps ({ renderPage }) {
+	static getInitialProps({ renderPage }) {
 		AppRegistry.registerComponent('Main', () => Main);
 		const { stylesheets } = AppRegistry.getApplication('Main');
-		const {html, head, errorHtml, chunks} = renderPage();
+		const { html, head, errorHtml, chunks } = renderPage();
 
 		return { html, styles: stylesheets, head, errorHtml, chunks };
 	}
@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
 
 	}
 
-	render () {
+	render() {
 		return <html>
 			<Head>
 				<link rel="stylesheet" href="/static/main.css" />
@@ -30,6 +30,6 @@ export default class MyDocument extends Document {
 				<Main/>
 				<NextScript/>
 			</body>
-		</html>
+		</html>;
 	}
 }
