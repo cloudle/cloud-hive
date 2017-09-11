@@ -7,6 +7,9 @@
     "start": "node server.js",
     "pm2": "PORT=8080 pm2 start server.js",
     "dev": "NODE_ENV=dev babel-node server.js",
+    "web": "node webpack.mobile.devserver",
+    "web-vendor": "webpack --config webpack.vendor.config.js --progress",
+    "web-bundle": "ENV=prod webpack --config webpack.mobile.config.js --progress",
     "api": "NODE_ENV=dev USE_NEXT=false babel-node server.js",
     "devtool": "NODE_ENV=dev USE_NEXT=false devtool -r babel-register server.js",
     "build": "next build && webpack --config webpack.config.js --progress",
@@ -72,11 +75,17 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "file-loader": "^0.11.2",
     "fs-extra": "^3.0.1",
+    "html-webpack-plugin": "^2.30.1",
     "jest": "20.0.4",
+    "json-loader": "^0.5.7",
+    "pretty-bytes": "^4.0.2",
+    "progress-bar-webpack-plugin": "^1.10.0",
     "react-test-renderer": "15.5.4",
     "style-loader": "^0.18.2",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.7.1"
   },
   "jest": {
     "preset": "react-native"
