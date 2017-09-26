@@ -7,8 +7,8 @@ import {
 } from 'react-universal-ui';
 import Drawer from 'react-native-drawer';
 
-import DrawerPane from './components/mobile/drawer';
-import NavigationHeader from './components/mobile/navigationHeader';
+import DrawerPane from './components/drawer';
+import NavigationHeader from './components/navigationHeader';
 import Markdown from './components/markdown';
 import { colors } from './utils';
 import * as appActions from './store/action/app';

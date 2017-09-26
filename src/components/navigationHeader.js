@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationHeader, routeAction, utils } from 'react-universal-ui';
 
-import { colors } from '../../utils';
+import { colors } from '../utils';
 import NavigationBackButton from './navigationBackButton';
 
 type Props = {

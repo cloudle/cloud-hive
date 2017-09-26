@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
-import Router from 'next/router';
-
-import { ResponsibleTouchArea, DropdownContainer } from 'react-universal-ui';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { ResponsibleTouchArea, utils as rUtils } from 'react-universal-ui';
 import Icon from './vector-icons/MaterialIcons';
-import { configs, colors } from '../../utils';
+
+import { colors, configs } from '../utils';
 
 type Props = {
 	url?: Object,
+	onNavigate?: Function,
 };
 
 export default class PlaygroundNavigation extends Component {
@@ -18,38 +18,29 @@ export default class PlaygroundNavigation extends Component {
 			<View style={styles.navContainer}>
 				<TouchableOpacity
 					style={styles.homeItemWrapper}
-					onPress={() => Router.push('/')}>
+					onPress={() => this.props.onNavigate && this.props.onNavigate({ link: '/' })}>
 					<Icon name="home" style={styles.menuIcon}/>
 				</TouchableOpacity>
 
-				{menuItems.map((menu, i) => {
+				{menuItems.filter(item => (rUtils.isBrowser ? true : !item.browserOnly)).map((menu, i) => {
 					return <MenuItem
 						key={i}
 						menu={menu}
 						pathname={this.props.url.pathname}
-						onPress={route => Router.push(route.link)}/>;
+						onPress={route => this.props.onNavigate && this.props.onNavigate(route)}/>;
 				})}
-			</View>
-			<View style={styles.sysContainer}>
-				<DropdownContainer
-					style={{ alignItems: 'center', justifyContent: 'center', height: 50, }}
-					dropdownWrapperStyle={{  }}
-					dropdownDirection="right">
-					<View
-						style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: 18, width: 36, height: 36 }}/>
-				</DropdownContainer>
 			</View>
 		</View>;
 	}
 }
 
 type MenuItemProps = {
-	menu: Object,
-	pathname: string,
-	onPress: Function,
+	menu?: Object,
+	pathname?: string,
+	onPress?: Function,
 };
 
-function MenuItem({ menu, pathname, onPress }: MenuItemProps) {
+export function MenuItem({ menu, pathname, onPress }: MenuItemProps) {
 	const activeStyle = pathname === menu.link ?
 		{ backgroundColor: colors.lighten(colors.darkBackground, 5) } : {};
 
@@ -60,7 +51,7 @@ function MenuItem({ menu, pathname, onPress }: MenuItemProps) {
 		fade ripple={false}
 		minActiveOpacity={0.5}
 		tooltipDirection="right"
-		onPress={() => onPress(menu)}>
+		onPress={() => onPress && onPress(menu)}>
 		<Icon name={menu.icon} style={styles.menuIcon}/>
 	</ResponsibleTouchArea>;
 }
@@ -95,23 +86,34 @@ const styles = StyleSheet.create({
 });
 
 const menuItems = [{
+	icon: 'lightbulb-outline',
+	link: '/playground',
+	scene: 'dashboard',
+	tooltip: 'dashboard',
+}, {
 	icon: 'assignment-ind',
 	link: '/playground/iam',
+	scene: 'iam',
 	tooltip: 'iam',
 }, {
 	icon: 'card-membership',
 	link: '/playground/bill',
+	scene: 'bill',
 	tooltip: 'billing',
 }, {
 	icon: 'fingerprint',
 	link: '/playground/schema',
+	scene: 'schema',
 	tooltip: 'schema',
 }, {
 	icon: 'graphic-eq',
 	link: '/playground/data',
+	scene: 'data',
 	tooltip: 'data',
 }, {
 	icon: 'play-circle-outline',
-	link: '/playground',
-	tooltip: 'playground',
-}, ];
+	link: '/playground/graphiql',
+	scene: 'home',
+	tooltip: 'graphiql',
+	browserOnly: true,
+} ];

@@ -9,11 +9,10 @@ const fsExtra = require('fs-extra');
 
 console.log('Bundling server...');
 
-//Exclude node_module stuffs
+// Exclude node_module stuffs
 let nodeModules = {};
 fs.readdirSync('node_modules')
 	.filter(function(x) {
-		console.log(x, '<<');
 		return ['.bin'].indexOf(x) === -1;
 	})
 	.forEach(function(mod) {

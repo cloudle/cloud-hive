@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withRedux from 'next-redux-wrapper';
 
 import Layout from '../../src/components/web/playgroundLayout';
-import Scene from '../../src/scenes/playground/data';
+import Scene from '../../src/components/web/graphiql';
 import store from '../../src/store';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 };
 
 @withRedux(store, ({ app }) => ({}))
-export default class PlaygroundData extends Component {
+export default class PlaygroundGraphiQL extends Component {
 	props: Props;
 
 	render() {

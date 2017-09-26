@@ -1,36 +1,22 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View, Image, Text, StyleSheet, } from 'react-native';
 import withRedux from 'next-redux-wrapper';
-import { Button, Input } from 'react-universal-ui';
 
 import Layout from '../../src/components/web/playgroundLayout';
-import { colors } from '../../src/utils';
+import Scene from '../../src/scenes/playground/bill';
 import store from '../../src/store';
-import * as appActions from '../../src/store/action/app';
 
 type Props = {
 	dispatch?: Function,
-	counter?: number,
+	url?: string,
 };
 
-@withRedux(store, ({ app }) => {
-	return {
-		counter: app.counter,
-	};
-})
-
+@withRedux(store, ({ app }) => ({}))
 export default class PlaygroundBill extends Component {
 	props: Props;
 
 	render() {
-		return <Layout url={this.props.url} style={styles.container}>
-			<Text>Playground Bill</Text>
+		return <Layout url={this.props.url}>
+			<Scene/>
 		</Layout>;
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		alignItems: 'center', alignContent: 'center',
-	},
-});
