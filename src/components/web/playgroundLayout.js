@@ -44,7 +44,7 @@ export default class AppLayout extends Component {
 		return <View style={styles.container}>
 			<ProgressBar backgroundColor="#ffffff"/>
 			<Navigation
-				url={this.props.url}
+				route={this.props.url}
 				onNavigate={route => Router.push(route.link)}/>
 
 			<View style={[styles.contentContainer, this.props.style]}>

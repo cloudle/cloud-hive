@@ -12,7 +12,7 @@ export default class PlaygroundData extends Component {
 
 	render() {
 		return <View style={styles.container}>
-			<Text>PlaygroundData</Text>
+			<Text>Playground Data</Text>
 		</View>;
 	}
 }

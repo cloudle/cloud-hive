@@ -12,7 +12,7 @@ export default class PlaygroundIam extends Component {
 
 	render() {
 		return <View style={styles.container}>
-			<Text>PlaygroundIam</Text>
+			<Text>Playground Iam</Text>
 		</View>;
 	}
 }

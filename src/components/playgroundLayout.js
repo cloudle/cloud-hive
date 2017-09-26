@@ -7,6 +7,7 @@ import { Element, Style } from '../../typeDefinition';
 type Props = {
 	wrapperStyle?: Style,
 	children?: Element,
+	url: Object,
 };
 
 export default class PlaygroundLayout extends Component {
@@ -22,7 +23,7 @@ export default class PlaygroundLayout extends Component {
 
 	render() {
 		return <View style={[styles.container, this.props.wrapperStyle]}>
-			<Navigation url={{}}/>
+			<Navigation url={this.props.url}/>
 			<View style={styles.contentContainer}>
 				{this.props.children}
 			</View>

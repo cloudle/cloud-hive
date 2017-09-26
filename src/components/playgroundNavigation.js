@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { ResponsibleTouchArea, utils as rUtils } from 'react-universal-ui';
+import { ResponsibleTouchArea, DropdownContainer, utils as rUtils } from 'react-universal-ui';
 import Icon from './vector-icons/MaterialIcons';
 
 import { colors, configs } from '../utils';
 
 type Props = {
-	url?: Object,
+	route?: Object,
 	onNavigate?: Function,
 };
 
@@ -26,9 +26,20 @@ export default class PlaygroundNavigation extends Component {
 					return <MenuItem
 						key={i}
 						menu={menu}
-						pathname={this.props.url.pathname}
+						route={this.props.route}
 						onPress={route => this.props.onNavigate && this.props.onNavigate(route)}/>;
 				})}
+			</View>
+
+			<View style={styles.sysContainer}>
+				<DropdownContainer
+					style={{ alignItems: 'center', justifyContent: 'center', height: 50, }}
+					dropdownWrapperStyle={{  }}
+					dropdownDirection="right">
+					<View style={{
+						backgroundColor: 'rgba(255, 255, 255, 0.8)',
+						borderRadius: 18, width: 36, height: 36 }}/>
+				</DropdownContainer>
 			</View>
 		</View>;
 	}
@@ -36,13 +47,15 @@ export default class PlaygroundNavigation extends Component {
 
 type MenuItemProps = {
 	menu?: Object,
-	pathname?: string,
+	route?: Object,
 	onPress?: Function,
 };
 
-export function MenuItem({ menu, pathname, onPress }: MenuItemProps) {
-	const activeStyle = pathname === menu.link ?
-		{ backgroundColor: colors.lighten(colors.darkBackground, 5) } : {};
+export function MenuItem({ menu, route, onPress }: MenuItemProps) {
+	const pathname = route.pathname || route.link,
+		activeStyle = pathname === menu.link ? {
+			backgroundColor: colors.lighten(colors.darkBackground, 5)
+		} : {};
 
 	return <ResponsibleTouchArea
 		wrapperStyle={[styles.menuItemWrapper, activeStyle]}
@@ -113,7 +126,7 @@ const menuItems = [{
 }, {
 	icon: 'play-circle-outline',
 	link: '/playground/graphiql',
-	scene: 'home',
+	scene: 'graphiql',
 	tooltip: 'graphiql',
-	browserOnly: true,
+	// browserOnly: true,
 } ];

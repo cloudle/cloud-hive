@@ -7,7 +7,7 @@ import store from '../../src/store';
 
 type Props = {
 	dispatch?: Function,
-	url?: string,
+	url?: Object,
 };
 
 @withRedux(store, ({ app }) => ({}))
