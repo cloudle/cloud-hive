@@ -1,20 +1,19 @@
 import 'babel-polyfill';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactNative, { View, Text, AsyncStorage } from 'react-native';
 import { AppContainer } from 'react-hot-loader';
 
-import app from './src/mobileEntry';
-import configureStore from './src/store';
+import app from './src';
+import { store } from './src/store';
 import * as appActions from './src/store/action/app';
 
-const store = configureStore();
-
-const render = (AppComponent) => {
+const render = (Component) => {
 	const rootEl = document.getElementById('root');
+
 	setTimeout(() => {
 		ReactNative.render(
 			<AppContainer>
-				<AppComponent store={store}/>
+				<Component store={store}/>
 			</AppContainer>,
 			rootEl
 		);
@@ -24,8 +23,8 @@ const render = (AppComponent) => {
 render(app);
 
 if (module.hot) {
-	module.hot.accept('./src/mobileEntry', () => {
-		const nextApp = require('./src/mobileEntry').default;
+	module.hot.accept('./src', () => {
+		const nextApp = require('./src').default;
 		render(nextApp);
 
 		/* Beautiful workaround:
