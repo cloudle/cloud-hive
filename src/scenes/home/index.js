@@ -5,11 +5,12 @@ import { Button, routeAction } from 'react-universal-ui';
 
 type Props = {
 	dispatch?: Function,
+	counter?: number,
 };
 
 @connect(({ app }) => {
 	return {
-
+		counter: app.counter,
 	};
 })
 
@@ -18,7 +19,7 @@ export default class HomeScene extends Component {
 
 	render() {
 		return <View style={styles.container}>
-			<Text>HomeScene</Text>
+			<Text>HomeScene!! {this.props.counter}</Text>
 			<Button title="Welcome" onPress={() => this.props.dispatch(routeAction.push('welcome'))}/>
 		</View>;
 	}

@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import { getIdToken } from './firebase';
 
 export const apiEndpoint = 'http://localhost:8080/api';
@@ -90,8 +89,3 @@ function gatherFragments(fragments, fragment) {
 		name: nextFragmentName,
 	};
 }
-
-global.wire = {
-	Relay,
-	query,
-};

@@ -20,6 +20,8 @@ type Props = {
 })
 
 export default class PlaygroundBill extends Component {
+	props: Props;
+
 	render() {
 		return <Layout url={this.props.url} style={styles.container}>
 			<Text>Playground Bill</Text>

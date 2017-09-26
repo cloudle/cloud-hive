@@ -12,6 +12,7 @@ import * as appActions from '../../src/store/action/app';
 type Props = {
 	dispatch?: Function,
 	counter?: number,
+	url?: string,
 };
 
 @withRedux(store, ({ app }) => {
@@ -21,6 +22,8 @@ type Props = {
 })
 
 export default class PlaygroundPage extends Component {
+	props: Props;
+
 	render() {
 		return <Layout url={this.props.url}>
 			<GraphiQL/>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { View, Text, StyleSheet } from 'react-native';
 import Router from 'next/router';
 
 import store from '../../store';

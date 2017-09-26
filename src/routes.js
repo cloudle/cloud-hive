@@ -6,8 +6,9 @@ export default {
 		title: '',
 		component: Home,
 	},
-	welcome: {
+	index: {
 		title: 'Welcome',
 		component: Welcome,
+		hideNavigation: true,
 	},
 };

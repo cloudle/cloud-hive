@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default class Greeting extends Component {
+export default class PlaygroundLayout extends Component {
 	render() {
-		return <View>
-			<Text>Greeting!</Text>
+		return <View style={styles.container}>
+			<Text>PlaygroundLayout</Text>
 		</View>;
 	}
 }
 
 const styles = StyleSheet.create({
-
+	container: {
+		
+	},
 });

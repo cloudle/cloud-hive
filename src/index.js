@@ -2,15 +2,8 @@ import React, { Component } from 'react';
 import { Provider, connect } from 'react-redux';
 import { StatusBar, View, Text, StyleSheet } from 'react-native';
 import {
-	Button,
-	Modal,
-	Dropdown,
-	Snackbar,
-	ContextProvider,
-	NavigationCardStack,
-	ruuiActions,
-	routeAction,
-	utils as ruuiUtils,
+	Button, Modal, Dropdown, Snackbar, ContextProvider, NavigationCardStack,
+	ruuiActions, routeAction, utils as ruuiUtils,
 } from 'react-universal-ui';
 import Drawer from 'react-native-drawer';
 
@@ -102,6 +95,16 @@ function drawerTween(ratio, side = 'left') {
 	};
 }
 
+type ContainerProps = {
+	store: Object,
+};
+
+export default function AppContainer({ store }: ContainerProps) {
+	return <Provider store={store}>
+		<App/>
+	</Provider>;
+}
+
 const markdownStyles = {
 	heading1: {
 		fontSize: 24,
@@ -125,19 +128,9 @@ const styles = StyleSheet.create({
 		backgroundColor: '#000',
 	},
 	navigator: {
-		// flex: 1, backgroundColor: colors.main,
+		flex: 1, backgroundColor: colors.main,
 	},
 	sceneWrapper: {
 		flex: 1,
 	}
 });
-
-type ContainerProps = {
-	store: Object,
-};
-
-export default function AppContainer({ store }: ContainerProps) {
-	return <ContextProvider store={store}>
-		<App/>
-	</ContextProvider>;
-}

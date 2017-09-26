@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import Router from 'next/router';
 
+import { ResponsibleTouchArea, DropdownContainer } from 'react-universal-ui';
 import Icon from './vector-icons/MaterialIcons';
 import { configs, colors } from '../../utils';
 
@@ -14,19 +15,30 @@ export default class PlaygroundNavigation extends Component {
 
 	render() {
 		return <View style={styles.container}>
-			<TouchableOpacity
-				style={styles.homeItemWrapper}
-				onPress={() => Router.push('/')}>
-				<Icon name='home' style={styles.menuIcon}/>
-			</TouchableOpacity>
+			<View style={styles.navContainer}>
+				<TouchableOpacity
+					style={styles.homeItemWrapper}
+					onPress={() => Router.push('/')}>
+					<Icon name="home" style={styles.menuIcon}/>
+				</TouchableOpacity>
 
-			{menuItems.map((menu, i) => {
-				return <MenuItem
-					key={i}
-					menu={menu}
-					pathname={this.props.url.pathname}
-					onPress={route => Router.push(route.link)}/>;
-			})}
+				{menuItems.map((menu, i) => {
+					return <MenuItem
+						key={i}
+						menu={menu}
+						pathname={this.props.url.pathname}
+						onPress={route => Router.push(route.link)}/>;
+				})}
+			</View>
+			<View style={styles.sysContainer}>
+				<DropdownContainer
+					style={{ alignItems: 'center', justifyContent: 'center', height: 50, }}
+					dropdownWrapperStyle={{  }}
+					dropdownDirection="right">
+					<View
+						style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: 18, width: 36, height: 36 }}/>
+				</DropdownContainer>
+			</View>
 		</View>;
 	}
 }
@@ -38,14 +50,19 @@ type MenuItemProps = {
 };
 
 function MenuItem({ menu, pathname, onPress }: MenuItemProps) {
-	const activeStyle = pathname === menu.path ?
-		{ backgroundColor: colors.darken(colors.darkBackground, 0) } : {};
+	const activeStyle = pathname === menu.link ?
+		{ backgroundColor: colors.lighten(colors.darkBackground, 5) } : {};
 
-	return <TouchableOpacity
-		style={[styles.menuItemWrapper, activeStyle]}
+	return <ResponsibleTouchArea
+		wrapperStyle={[styles.menuItemWrapper, activeStyle]}
+		innerStyle={styles.menuItemInner}
+		tooltip={menu.tooltip}
+		fade ripple={false}
+		minActiveOpacity={0.5}
+		tooltipDirection="right"
 		onPress={() => onPress(menu)}>
 		<Icon name={menu.icon} style={styles.menuIcon}/>
-	</TouchableOpacity>;
+	</ResponsibleTouchArea>;
 }
 
 const styles = StyleSheet.create({
@@ -53,10 +70,18 @@ const styles = StyleSheet.create({
 		width: configs.navigationWidth,
 		backgroundColor: colors.darken(colors.darkBackground, 5),
 	},
+	navContainer: {
+		flex: 1,
+	},
+	sysContainer: {
+		marginBottom: 15,
+	},
 	menuItemWrapper: {
-		alignItems: 'center', justifyContent: 'center',
-		height: configs.navigationWidth,
 		backgroundColor: colors.darken(colors.darkBackground, 2),
+		borderRadius: 0,
+	},
+	menuItemInner: {
+		paddingVertical: 12, alignItems: 'center',
 	},
 	homeItemWrapper: {
 		alignItems: 'center', justifyContent: 'flex-end',
@@ -72,19 +97,21 @@ const styles = StyleSheet.create({
 const menuItems = [{
 	icon: 'assignment-ind',
 	link: '/playground/iam',
+	tooltip: 'iam',
 }, {
 	icon: 'card-membership',
 	link: '/playground/bill',
-},  {
-	icon: 'queue-play-next',
-	link: '/playground/project',
+	tooltip: 'billing',
 }, {
 	icon: 'fingerprint',
 	link: '/playground/schema',
+	tooltip: 'schema',
 }, {
 	icon: 'graphic-eq',
 	link: '/playground/data',
+	tooltip: 'data',
 }, {
 	icon: 'play-circle-outline',
 	link: '/playground',
+	tooltip: 'playground',
 }, ];

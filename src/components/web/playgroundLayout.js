@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { View, Text, StyleSheet } from 'react-native';
+import { Dropdown } from 'react-universal-ui';
 import Router from 'next/router';
 
 import PlaygroundNavigation from './playgroundNavigation';
 import ProgressBar from './progressBar';
 import * as appActions from '../../store/action/app';
 import { iStyles, colors } from '../../utils';
-import type { Style } from '../../../typeDefinition';
+import type { Style, Element } from '../../../typeDefinition';
 
 type Props = {
+	dispatch?: Function,
 	url?: Object,
 	style?: Style,
+	children?: Element,
 };
 
 @connect(({ app }) => {
@@ -44,6 +47,8 @@ export default class AppLayout extends Component {
 			<View style={[styles.contentContainer, this.props.style]}>
 				{this.props.children}
 			</View>
+
+			<Dropdown/>
 		</View>;
 	}
 }
