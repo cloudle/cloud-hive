@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 		marginTop: 3, paddingBottom: 10,
 	},
 	menuIcon: {
-		color: '#ffffff',
+		color: '#ffffff', backgroundColor: 'transparent',
 		fontSize: 22,
 	},
 });
@@ -128,5 +128,5 @@ const menuItems = [{
 	link: '/playground/graphiql',
 	scene: 'graphiql',
 	tooltip: 'graphiql',
-	// browserOnly: true,
+	browserOnly: true,
 } ];

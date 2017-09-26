@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StatusBar, View, Text, StyleSheet } from 'react-native';
 
 import Navigation from '../../components/playgroundNavigation';
+import GraphiQL from '../../components/web/graphiql';
 import DashboardScene from './dashboard';
 import IamScene from './iam';
 import BillScene from './bill';
