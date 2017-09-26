@@ -4,7 +4,7 @@ const config = require('./webpack.mobile.config');
 const colors = require('colors');
 const prettyBytes = require('pretty-bytes');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 const logMode = process.env.LOG;
 
 console.log('A magical force.. is raising at', ` localhost:${port} `.bgGreen, ':p');
