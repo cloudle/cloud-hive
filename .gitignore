@@ -6,6 +6,9 @@
 .next/
 .server/
 
+#iOs
+ios/Pods
+
 # node.js
 node_modules/
 npm-debug.log

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
-import App from './src/mobileEntry';
-import configureStore from './src/store';
+import { AppRegistry, View, Text } from 'react-native';
+// import App from './src';
+// import configureStore from './src/store';
 
-const store = configureStore();
+// const store = configureStore();
 function appWithStore() {
-	return <App store={store}/>;
+	return <View>
+		<Text>Hi</Text>
+	</View>;
 }
 
 AppRegistry.registerComponent('app', () => appWithStore);

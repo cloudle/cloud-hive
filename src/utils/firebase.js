@@ -4,8 +4,6 @@ import * as appActions from '../store/action/app';
 
 const { initializeApp, auth } = firebase;
 const provider = ruuiUtils.isBrowser ? new auth.GoogleAuthProvider() : {};
-global.ruuiUtils = ruuiUtils;
-console.log(ruuiUtils.os);
 
 export const fireApp = ruuiUtils.isBrowser ? initializeApp({
 	apiKey: 'AIzaSyCsu9ZZt9JNYy3liqY98U2BEc_Md-I0Wic',
@@ -36,6 +34,8 @@ export function dispatch(payload) {
 		if (globalStore && globalStore.dispatch) {
 			globalStore.dispatch(payload);
 		}
+	} else {
+
 	}
 }
 
