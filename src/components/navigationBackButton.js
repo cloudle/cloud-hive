@@ -14,7 +14,7 @@ const NavigationHeaderBackButton = (props: Props) => (
 );
 
 NavigationHeaderBackButton.propTypes = {
-	onPress: React.PropTypes.func.isRequired
+	onPress: Function,
 };
 
 const styles = StyleSheet.create({

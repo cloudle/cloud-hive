@@ -10,7 +10,7 @@ export default class DocSidebar extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-  	backgroundColor: 'red',
+	container: {
+		backgroundColor: 'red',
 	},
 });

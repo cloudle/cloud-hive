@@ -1,19 +1,4 @@
-export const fireApp = {};
+import firebaseNative from 'react-native-firebase';
+import { defaultFireAppConfigs } from './configs';
 
-export function getIdToken() {
-	return new Promise((resolve, reject) => {
-		reject('not implemented');
-	});
-}
-
-export function dispatch(payload) {
-
-}
-
-export function login() {
-
-}
-
-export function logout() {
-
-}
+export const fireApp = firebaseNative.initializeApp(defaultFireAppConfigs);

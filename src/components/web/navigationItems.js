@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Router from 'next/router';
 import { connect } from 'react-redux';
 
-import { colors, iStyles, login, logout } from '../../utils';
+import { colors, iStyles, loginBrowser, logout } from '../../utils';
 
 type Props = {
 	url?: Object,
@@ -43,7 +43,7 @@ export default class extends Component {
 			<Text style={styles.menuText}>{this.props.userProfile.displayName} | LOGOUT</Text>
 		</TouchableOpacity> : <TouchableOpacity
 			style={styles.menuItemWrapper}
-			onPress={() => login()}>
+			onPress={() => loginBrowser()}>
 			<Text style={styles.menuText}>LOGIN</Text>
 		</TouchableOpacity>;
 	}

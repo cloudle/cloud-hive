@@ -6,7 +6,7 @@ import AppLayout from '../../src/components/web/layout';
 import store from '../../src/store';
 
 type Props = {
-	url?: string,
+	url?: Object,
 };
 
 @withRedux(store, ({ app }) => {
