@@ -8834,9 +8834,9 @@ uniqs@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/uniqs/-/uniqs-2.0.0.tgz#ffede4b36b25290696e6e165d4a59edb998e6b02"
 
-universal-vector-icons@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/universal-vector-icons/-/universal-vector-icons-4.4.1.tgz#d792f3807846aba53ff32b0a419b96ca617a77dd"
+universal-vector-icons@^4.4.12:
+  version "4.4.12"
+  resolved "https://registry.yarnpkg.com/universal-vector-icons/-/universal-vector-icons-4.4.12.tgz#f4014d141806462578979867100b7ba629840dca"
   dependencies:
     lodash "^4.0.0"
     prop-types "^15.5.10"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { ResponsibleTouchArea, DropdownContainer, utils as rUtils } from 'react-universal-ui';
-import Icon from './vector-icons/MaterialIcons';
+import Icon from 'universal-vector-icons/MaterialIcons';
 
 import { colors, configs } from '../utils';
 
