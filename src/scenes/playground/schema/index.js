@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Text, StyleSheet } from 'react-native';
 
 import TypeSummary from './typeSummary';
+import ToolbarTab from '../../../components/toolbarTab';
 import { iStyles, configs, colors } from '../../../utils';
 import { Element, Style } from '../../../../typeDefinition';
 
@@ -27,6 +28,12 @@ export default class PlaygroundSchema extends Component {
 	renderSummary = () => {
 		return <View style={styles.leftPaneContent}>
 			<ScrollView contentContainerStyle={styles.leftPaneScrollContainer}>
+				<TouchableOpacity style={{
+					backgroundColor: colors.secondary, borderRadius: 3,
+					padding: 12, marginTop: 3, marginBottom: 14, }}>
+					<Text style={{ color: '#ffffff', }}>ADD NEW TYPE</Text>
+				</TouchableOpacity>
+
 				{fakeTypes.map((type, i) => {
 					return <TypeSummary key={i} {...type}/>;
 				})}
@@ -35,7 +42,20 @@ export default class PlaygroundSchema extends Component {
 	};
 
 	renderTabs = () => {
-		return <View style={styles.paneCommands}/>;
+		return <View style={styles.paneCommands}>
+			<ToolbarTab
+				icon="style"
+				title="TYPES"
+				wrapperStyle={{ backgroundColor: colors.lighterBackground }}
+				textStyle={{ color: '#ffffff', }}
+				iconStyle={{ color: colors.secondary }}/>
+			<ToolbarTab
+				icon="filter-tilt-shift"
+				title="INTERFACES"/>
+			<ToolbarTab
+				icon="hdr-strong"
+				title="ENUMS"/>
+		</View>;
 	};
 
 	renderContent = () => {
@@ -52,24 +72,27 @@ const styles = StyleSheet.create({
 		marginLeft: 5, width: configs.paneSize,
 	},
 	paneCommands: {
+		flexDirection: 'row', alignItems: 'flex-end',
 		height: configs.topPaneSize,
+		paddingHorizontal: 18,
 		backgroundColor: colors.darkerBackground,
 		borderBottomWidth: 5, borderColor: colors.lighterBackground,
 	},
 	leftPaneContent: {
 		flex: 1,
 		backgroundColor: colors.darkBackground,
-		padding: 10, paddingRight: 3,
+		paddingLeft: 10, paddingRight: 3,
 	},
 	leftPaneScrollContainer: {
-		marginRight: 20,
+		marginVertical: 8, marginRight: 20,
 	},
 	centralPane: {
 		flex: 1,
 	},
 	rightPaneContent: {
 		flex: 1,
-		backgroundColor: colors.lighterBackground,
+		backgroundColor: 'rgba(255, 255, 255, 0.08)',
+		// backgroundColor: colors.lighterBackground,
 	},
 });
 
