@@ -23,7 +23,7 @@ export const colors = {
 	darkBackground,
 	darkerBackground: darken(darkBackground, 4),
 	lightSomeBackground: lighten(darkBackground, 5),
-	lighterBackground: lighten(darkBackground, 10),
+	lighterBackground: lighten(darkBackground, 5),
 };
 
 function darken(base = '#ffffff', amount = 5) {

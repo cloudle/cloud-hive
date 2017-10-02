@@ -71,7 +71,7 @@ export function MenuItem({ menu, route, onPress }: MenuItemProps) {
 
 const styles = StyleSheet.create({
 	container: {
-		width: configs.navigationWidth,
+		width: configs.navigationSize,
 		backgroundColor: colors.darken(colors.darkBackground, 5),
 	},
 	navContainer: {
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
 	},
 	homeItemWrapper: {
 		alignItems: 'center', justifyContent: 'flex-end',
-		height: configs.navigationWidth,
-		marginTop: 3, paddingBottom: 10,
+		height: configs.topPaneSize,
+		paddingTop: 3, paddingBottom: 10,
 	},
 	menuIcon: {
 		color: '#ffffff', backgroundColor: 'transparent',

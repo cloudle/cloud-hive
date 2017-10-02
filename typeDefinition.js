@@ -24,3 +24,14 @@ export type LayoutEvent = {
 		},
 	},
 };
+
+export type SchemaField = {
+	name?: String,
+	required?: boolean,
+};
+
+export type SchemaType = {
+	name?: String,
+	fields?: Array<SchemaField>,
+	wrapperStyle?: Style,
+};

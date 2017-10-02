@@ -1,6 +1,8 @@
 export const configs = {
 	maxContentWidth: 1024,
-	navigationWidth: 50,
+	navigationSize: 50,
+	paneSize: 320,
+	topPaneSize: 60,
 };
 
 export const defaultFireAppConfigs = {

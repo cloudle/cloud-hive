@@ -55,7 +55,7 @@ function getSceneComponent(route) {
 	case 'data':
 		return DataScene;
 	default:
-		return DashboardScene;
+		return SchemaScene;
 	}
 }
 
